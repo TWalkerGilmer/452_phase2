@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <assert.h>
 #include "phase2.h"
 #include "phase1.h"
 
@@ -10,7 +11,11 @@
 // Mailbox
 // Message?
 
-// systemCallVec[]
+// typedef struct MailBox {
+// } MailBox;
+
+//void * systemCallVec[MAXSYSCALLS];
+//void (*systemCallVec[])(systemArgs *args);  ???
 
 // static array of mailboxes[MAXMBOX]
 // static array of mail slots with space for MAXSLOTS elements
@@ -18,11 +23,27 @@
     // slots are shared across mailboxes
 // a "shadow" process table
 
+static void nullsys() {
+    // print an error message and terminate the simulation
+    assert(0);
+}
+
+void phase2_init() {
+    // among other things, (maybe?)
+    // set all elements of systemCallVec[] to nullsys(), a function above
+    void (*nullsys_func_ptr)(void);
+    nullsys_func_ptr = &nullsys;
+    for (int i = 0; i < MAXSYSCALLS; i++) {
+        systemCallVec[i] = nullsys_func_ptr;
+    }
+}
+
 /**
  * Creates a new Mailbox
 */
 int MboxCreate(int numSlots, int slotSize) {
 
+    return 0; // placeholder
 }
 
 /**
@@ -30,6 +51,7 @@ int MboxCreate(int numSlots, int slotSize) {
 */
 int MboxRelease(int mailboxID) {
 
+    return 0; // placeholder
 }
 
 /**
@@ -38,6 +60,7 @@ int MboxRelease(int mailboxID) {
 */
 int MboxSend(int mailboxID, void * message, int messageSize) {
 
+    return 0; // placeholder
 }
 
 /**
@@ -45,6 +68,7 @@ int MboxSend(int mailboxID, void * message, int messageSize) {
 */
 int MboxReceive(int mailboxID, void * message, int maxMessageSize) {
 
+    return 0; // placeholder
 }
 
 /**
@@ -52,6 +76,7 @@ int MboxReceive(int mailboxID, void * message, int maxMessageSize) {
 */
 int MboxCondSend(int mailboxID, void * message, int messageSize) {
 
+    return 0; // placeholder
 }
 
 /**
@@ -59,6 +84,7 @@ int MboxCondSend(int mailboxID, void * message, int messageSize) {
 */
 int MboxCondReceive(int mailboxID, void * message, int maxMessageSize) {
 
+    return 0; // placeholder
 }
 
 /**
@@ -66,6 +92,7 @@ int MboxCondReceive(int mailboxID, void * message, int maxMessageSize) {
 */
 int waitDevice(int type, int unit, int * status) {
 
+    return 0; // placeholder
 }
 
 /**
@@ -78,8 +105,9 @@ void phase2_start_service_processes() {
 /**
  * called by sentinel() to check if there are any currently blocked processes
 */
-void phase2_check_io() {
+int phase2_check_io() {
 
+    return 0; // placeholder
 }
 
 /**
