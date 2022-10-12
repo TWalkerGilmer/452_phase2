@@ -14,8 +14,7 @@
 // typedef struct MailBox {
 // } MailBox;
 
-//void * systemCallVec[MAXSYSCALLS];
-//void (*systemCallVec[])(systemArgs *args);  ???
+void (*systemCallVec[MAXSYSCALLS])(systemArgs * args);
 
 // static array of mailboxes[MAXMBOX]
 // static array of mail slots with space for MAXSLOTS elements
@@ -23,7 +22,7 @@
     // slots are shared across mailboxes
 // a "shadow" process table
 
-static void nullsys() {
+static void nullsys(/*systemArgs?*/) {
     // print an error message and terminate the simulation
     assert(0);
 }
@@ -43,7 +42,7 @@ void phase2_init() {
 */
 int MboxCreate(int numSlots, int slotSize) {
 
-    return 0; // placeholder
+    return -1; // placeholder
 }
 
 /**
@@ -51,7 +50,7 @@ int MboxCreate(int numSlots, int slotSize) {
 */
 int MboxRelease(int mailboxID) {
 
-    return 0; // placeholder
+    return -1; // placeholder
 }
 
 /**
@@ -60,7 +59,7 @@ int MboxRelease(int mailboxID) {
 */
 int MboxSend(int mailboxID, void * message, int messageSize) {
 
-    return 0; // placeholder
+    return -1; // placeholder
 }
 
 /**
@@ -68,7 +67,7 @@ int MboxSend(int mailboxID, void * message, int messageSize) {
 */
 int MboxReceive(int mailboxID, void * message, int maxMessageSize) {
 
-    return 0; // placeholder
+    return -1; // placeholder
 }
 
 /**
@@ -76,7 +75,7 @@ int MboxReceive(int mailboxID, void * message, int maxMessageSize) {
 */
 int MboxCondSend(int mailboxID, void * message, int messageSize) {
 
-    return 0; // placeholder
+    return -1; // placeholder
 }
 
 /**
@@ -84,7 +83,7 @@ int MboxCondSend(int mailboxID, void * message, int messageSize) {
 */
 int MboxCondReceive(int mailboxID, void * message, int maxMessageSize) {
 
-    return 0; // placeholder
+    return -1; // placeholder
 }
 
 /**
@@ -92,7 +91,7 @@ int MboxCondReceive(int mailboxID, void * message, int maxMessageSize) {
 */
 int waitDevice(int type, int unit, int * status) {
 
-    return 0; // placeholder
+    return -1; // placeholder
 }
 
 /**
@@ -107,7 +106,7 @@ void phase2_start_service_processes() {
 */
 int phase2_check_io() {
 
-    return 0; // placeholder
+    return -1; // placeholder
 }
 
 /**
